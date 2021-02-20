@@ -5,6 +5,28 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class LancamentoFilter {
+	
+	public LancamentoFilter(String descricao, LocalDate dataVencimentoDe, LocalDate dataVencimentoAte) {
+		this.descricao = descricao;
+		this.dataVencimentoDe = dataVencimentoDe;
+		this.dataVencimentoAte = dataVencimentoAte;
+	}
+	
+	public LancamentoFilter(String descricao, String dataVencimentoDe, String dataVencimentoAte) {
+		
+		if(descricao != null) {
+			this.descricao = descricao;
+		}
+		
+		if(dataVencimentoDe != null) {
+			this.dataVencimentoDe = LocalDate.parse(dataVencimentoDe);
+		}
+		
+		if(dataVencimentoAte != null) {
+			this.dataVencimentoAte = LocalDate.parse(dataVencimentoAte);
+		}
+		
+	}
 
 	private String descricao;
 	

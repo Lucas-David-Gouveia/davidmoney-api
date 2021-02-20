@@ -1,5 +1,6 @@
 package com.david.davidmoney.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,16 +19,20 @@ public class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo")
 	private Long codigo;
 	
 	@NotNull
 	@Size(min = 3, max = 50)
+	@Column(name = "nome")
 	private String nome;
 	
 	@Embedded
+	@Column(name = "endereco")
 	private Endereco endereco;
 	
 	@NotNull
+	@Column(name = "ativo")
 	private boolean ativo;
 
 	public Long getCodigo() {

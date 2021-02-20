@@ -22,10 +22,12 @@ public class Lancamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo")
 	private Long codigo;
 	
 	@NotNull
 	@Size(max = 50)
+	@Column(name = "descricao")
 	private String descricao;
 	
 	@NotNull
@@ -36,9 +38,11 @@ public class Lancamento {
 	private LocalDate dataPagamento;
 	
 	@NotNull
+	@Column(name = "valor")
 	private BigDecimal valor;
 	
 	@Size(max = 100)
+	@Column(name = "observacao")
 	private String observacao;
 	
 	@NotNull

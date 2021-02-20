@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,35 +49,20 @@ public class LancamentoResource {
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
-
-	
 	
 	@GetMapping
-	public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
+	public Page<Lancamento> pesquisar(@RequestParam (value = "descricao", required = false) String descricao, 
+			@RequestParam (value = "dataVencimentoDe", required = false) String dataVencimentoDe, 
+			@RequestParam (value = "dataVencimentoAte", required = false) String dataVencimentoAte, Pageable pageable) {
+		
+		LancamentoFilter lancamentoFilter;
+		lancamentoFilter = new LancamentoFilter(descricao, dataVencimentoDe, dataVencimentoAte);
+		
 		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
 	}
 	
-	
-	/*
-	@GetMapping
-	public String listar(LancamentoFilter lancamentoFilter) {
-		
-		String body;
-		
-		body = "Descrição: " + lancamentoFilter.getDescricao() + "\n" + 
-				"Data vencimento de: " + lancamentoFilter.getDataVencimentoDe() + "\n" +
-				"Data vencimento até: " + lancamentoFilter.getDataVencimentoAte();
-		
-		return body;
-	}
-	*/
-	
-	
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Lancamento> buscarPeloCodigo(@PathVariable Long codigo) {
-		
-		//Lancamento lancamentoSalvo = lancamentoRepository.getOne(codigo);
-		//return ResponseEntity.ok(lancamentoSalvo);
 		
 		Optional<Lancamento> lancamento = lancamentoRepository.findById(codigo);
 		

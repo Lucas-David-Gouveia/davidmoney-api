@@ -1,5 +1,6 @@
 package com.david.davidmoney.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +15,12 @@ public class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "codigo")
 	private Long codigo;
 	
 	@NotNull
 	@Size(min = 1, max = 60)
+	@Column(name = "nome")
 	private String nome;
 	
 	public Long getCodigo() {

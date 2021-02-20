@@ -52,8 +52,6 @@ public class PessoaResource {
 			return ResponseEntity.ok(pessoa.get());
 		}
 
-		// return pessoaRepository.findById(codigo).orElse(null);
-
 		return ResponseEntity.notFound().build();
 	}
 
@@ -83,15 +81,3 @@ public class PessoaResource {
 		pessoaService.atualizarPropriedadeAtivo(codigo, ativo);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

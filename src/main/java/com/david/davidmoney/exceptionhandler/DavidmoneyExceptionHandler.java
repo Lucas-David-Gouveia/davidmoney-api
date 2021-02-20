@@ -116,14 +116,3 @@ public class DavidmoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
